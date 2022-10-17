@@ -1,26 +1,16 @@
-import { useReducer } from "react";
-function reducer(state, action) {
-  switch (action.type) {
-    case "INCREMENT":
-      return state + 1;
-    case "DECREMENT":
-      return state - 1;
-    case "INCREMENT_DOUBLE":
-      return state + action.payload
-    default:
-      throw new Error("Unhandled action");
-  }
-}
+import { useReducer, useState } from "react";
 function Counter() {
-  const [number, dispatch] = useReducer(reducer, 0);
+  //useReducer로  숫자 증가 감소를 구현해보세요.
+  const [count, dispatch] = useReducer(reducer, 0);
+  const [input, setInput] = useState(0);
+  function reducer(state, action) {}
+
   return (
     <>
-      <h1>숫자:{number}</h1>
-      <div>
-        <button onClick={() => dispatch({ type: "INCREMENT" })}>+1</button>
-        <button onClick={() => dispatch({ type: "DECREMENT" })}>-1</button>
-        <button onClick={() => dispatch({ type: "INCREMENT_DOUBLE", payload: 2 })}>+2</button>
-      </div>
+      <h1>{count}</h1>
+      <input type="number" value={input} />
+      <button>+</button>
+      <button>-</button>
     </>
   );
 }
